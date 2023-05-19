@@ -1,0 +1,31 @@
+<!-- showtimesedit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Showtime</title>
+    <style>
+      /* CSS styles here */
+    </style>
+  </head>
+
+  <body>
+    <h1>Edit Showtime</h1>
+
+    <form action="/updateShowtime" method="POST">
+      <input type="hidden" name="showtimeID" value="<%= showtime._id %>" />
+      <input type="number" placeholder="New TheaterID" name="newTheaterID" value="<%= showtime.TheaterID %>" />
+      <input type="number" placeholder="New MovieID" name="newMovieID" value="<%= showtime.MovieID %>" />
+      <input type="number" step="0.01" placeholder="New Price" name="newPrice" value="<%= showtime.Price %>" />
+
+      <!-- Updated code -->
+      <input type="datetime-local" placeholder="New StartTime" name="newStartTime" value="<%= showtime.StartTime.toISOString().slice(0, 16) %>" />
+      <input type="datetime-local" placeholder="New EndTime" name="newEndTime" value="<%= showtime.EndTime.toISOString().slice(0, 16) %>" />
+      <!-- End of updated code -->
+
+      <button type="submit">Save</button>
+    </form>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

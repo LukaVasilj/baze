@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Showtime</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+  
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Showtime Details</h1>
+  <p>Showtime ID: <%= showtime.ShowtimeID %></p>
+  <p>Theater ID: <%= showtime.TheaterID %></p>
+  <p>Movie ID: <%= showtime.MovieID %></p>
+  <p>Price: <%= showtime.Price %></p>
+  <p>Start Time: <%= showtime.StartTime %></p>
+  <p>End Time: <%= showtime.EndTime %></p>
+</body>
+</html>

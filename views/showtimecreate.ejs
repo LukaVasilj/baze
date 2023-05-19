@@ -1,0 +1,112 @@
+<!-- showtimecreate.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create New Showtime</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f8f8f8;
+          margin: 0;
+          padding: 0;
+        }
+  
+        h1 {
+          color: #333;
+          margin-bottom: 20px;
+        }
+  
+        h2 {
+          color: #333;
+          margin-bottom: 10px;
+        }
+  
+        table {
+          margin-left: 50px;
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+  
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+  
+        th {
+          background-color: #f2f2f2;
+        }
+  
+        form {
+          margin-bottom: 20px;
+        }
+  
+        input[type="number"],
+        input[type="text"] {
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+        }
+  
+        button {
+          padding: 10px 20px;
+          border-radius: 4px;
+          border: none;
+          background-color: #4caf50;
+          color: white;
+          cursor: pointer;
+        }
+  
+        button:hover {
+          background-color: #45a049;
+        }
+  
+        #message {
+          color: #4caf50;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        div{
+          margin-left: 50px;
+        }
+        form{
+          margin-left: 50px;
+        }
+        h1{
+          margin-left: 50px;
+        }
+        h2{
+          margin-left: 50px;
+        }
+      </style>
+  </head>
+
+  <body>
+    <h1>Create New Showtime</h1>
+
+    <form action="/showtimes" method="POST">
+        <input type="number" placeholder="ShowtimeID" name="ShowtimeID" required />
+        <label>Dvorana:</label>
+        <select name="TheaterID">
+            <% theaters.forEach(theater => { %>
+              <option value="<%= theater.TheaterID %>"><%= theater.Name %></option>
+            <% }); %>
+          </select>
+          <label >Movie:</label>
+          <select name="MovieID" id="movieID">
+            <% movies.forEach(function(movie) { %>
+              <option value="<%= movie.MovieID %>"><%= movie.Title %></option>
+            <% }) %>
+          </select>
+        <input type="number" step="0.01" placeholder="Price" name="Price" required />
+        <input type="datetime-local" placeholder="Start Time" name="StartTime" required />
+        <input type="datetime-local" placeholder="End Time" name="EndTime" required />
+        <button type="submit">Create</button>
+      </form>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

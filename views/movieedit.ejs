@@ -1,0 +1,29 @@
+<!-- movieedit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Movie</title>
+    <style>
+      /* CSS styles here */
+    </style>
+  </head>
+
+  <body>
+    <h1>Edit Movie</h1>
+
+    <form action="/updatemovie" method="POST">
+      <input type="hidden" name="movieID" value="<%= movie._id %>" />
+      <input type="text" placeholder="New Title" name="newTitle" value="<%= movie.Title %>" />
+      <input type="text" placeholder="New Director" name="newDirector" value="<%= movie.Director %>" />
+      <!-- <input type="number" placeholder="New Release Year" name="newReleaseYear" value="<%= movie.ReleaseYear %>" /> -->
+      <input type="datetime-local" placeholder="New Release" name="newReleaseDate" value="<%= movie.ReleaseDate.toISOString().slice(0, 16) %>" />
+
+      <input type="number" placeholder="New Genre" name="newGenreID" value="<%= movie.GenreID %>" />
+
+      <button type="submit">Save</button>
+    </form>
+
+    <script src="/mainnn.js"></script>
+  </body>
+</html>

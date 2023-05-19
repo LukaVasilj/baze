@@ -1,0 +1,144 @@
+<!-- showtimes.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CinemaDB</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f8f8f8;
+          margin: 0;
+          padding: 0;
+        }
+  
+        h1 {
+          color: #333;
+          margin-bottom: 20px;
+        }
+  
+        h2 {
+          color: #333;
+          margin-bottom: 10px;
+        }
+  
+        table {
+          margin-left: 50px;
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+  
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+  
+        th {
+          background-color: #f2f2f2;
+        }
+  
+        form {
+          margin-bottom: 20px;
+        }
+  
+        input[type="number"],
+        input[type="text"] {
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+        }
+  
+        button {
+          padding: 10px 20px;
+          border-radius: 4px;
+          border: none;
+          background-color: #4caf50;
+          color: white;
+          cursor: pointer;
+        }
+  
+        button:hover {
+          background-color: #45a049;
+        }
+  
+        #message {
+          color: #4caf50;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        div{
+          margin-left: 50px;
+        }
+        form{
+          margin-left: 50px;
+        }
+        h1{
+          margin-left: 50px;
+        }
+        h2{
+          margin-left: 50px;
+        }
+      </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Theaters</a></li>
+        <li><a href="/showtimes">Showtimes</a></li>
+        <li><a href="/movies">Movies</a></li>
+      </ul>
+    </nav>
+
+    <h1>Showtimes</h1>
+
+    <a href="/showtimecreate" class="create-button">Create New</a>
+
+    <h2>Showtimes from database:</h2>
+
+    <table>
+        <thead>
+          <tr>
+            <th>ShowtimeID</th>
+            <th>TheaterID</th>
+            <th>MovieID</th>
+            <th>Price</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i < showtimes.length; i++) { %>
+            <tr>
+              <td><%= showtimes[i].ShowtimeID %></td>
+              <td><%= showtimes[i].TheaterID %></td>
+              <td><%= showtimes[i].MovieID %></td>
+              <td><%= showtimes[i].Price %></td>
+              <td><%= showtimes[i].StartTime %></td>
+              <td><%= showtimes[i].EndTime %></td>
+              <td class="actions">
+                <form action="/editShowtime" method="GET" style="display: inline;">
+                  <input type="hidden" name="showtimeID" value="<%= showtimes[i]._id %>" />
+                  <button type="submit">Edit</button>
+                </form>
+                <form action="/showtimeview/<%= showtimes[i]._id %>" method="GET" style="display: inline;">
+                    <button type="submit">View</button>
+                  </form>
+                </form>
+                <button class="delete-button" data-showtime-id="<%= showtimes[i]._id %>">Delete</button>
+
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+    <div id="message"></div>
+
+    <script src="/mainn.js"></script>
+  </body>
+</html>

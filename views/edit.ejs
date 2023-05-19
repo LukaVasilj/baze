@@ -1,0 +1,62 @@
+<!-- edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Theater</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      form {
+        margin-left: 50px;
+        margin-bottom: 20px;
+      }
+
+      input[type="number"],
+      input[type="text"] {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Edit Theater</h1>
+
+    <form action="/update" method="POST">
+      <input type="hidden" name="theaterID" value="<%= theater._id %>" />
+      <input type="number" placeholder="New TheaterID" name="newTheaterID" value="<%= theater.TheaterID %>" />
+      <input type="text" placeholder="New Name" name="newName" value="<%= theater.Name %>" />
+      <input type="number" placeholder="New Capacity" name="newCapacity" value="<%= theater.Capacity %>" />
+      <button type="submit">Save</button>
+    </form>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
+

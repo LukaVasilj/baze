@@ -1,0 +1,27 @@
+<!-- moviecreate.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create New Movie</title>
+    <style>
+      /* CSS styles here */
+    </style>
+  </head>
+
+  <body>
+    <h1>Create New Movie</h1>
+
+    <form action="/movies" method="POST">
+        <input type="number" placeholder="MovieID" name="MovieID" required />
+      <input type="text" placeholder="Title" name="Title" required />
+      <input type="text" placeholder="Director" name="Director" required />
+      <input type="datetime-local" placeholder="Release Time" name="ReleaseDate" required />
+      <input type="number" placeholder="Genre" name="GenreID" required />
+
+      <button type="submit">Create</button>
+    </form>
+
+    <script src="/mainnn.js"></script>
+  </body>
+</html>
